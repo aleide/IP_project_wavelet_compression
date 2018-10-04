@@ -24,8 +24,18 @@ for i = 1 :+1:tn_length
     allcfs = vertcat(allcfs,cfs(:));
 end
 
-[allcfsSorted, sortind] = sort(allcfs, 2, 'descend');
+[allcfsSorted, sortind] = sort(allcfs, 'descend');
 
+% Make the changes to allcfsSorted
+% example, biggest to 1337
+allcfsSorted(1) = 1337;
+% Reverse of the sorted list
+unsorted = 1:length(allcfs);
+newIndex(sortind) = unsorted;
+allcfs2 = allcfsSorted(newIndex);
+
+
+(allcfs2(sortind(1)) == 1337)
 % Visit all terminal nodes.
 tn_length = size(get(t,'tn'),1) - 1;
 for i = 1 :+1:tn_length
