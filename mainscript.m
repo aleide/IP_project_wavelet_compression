@@ -10,8 +10,9 @@ footprint = double(imread('610px-Footprint.gif'));
 % Parameters
 image = duststorm;
 wname = 'rbio6.8';
-decomp_level = 5;
-dpz = 99.0;
+decomp_level = 3;
+dcpf = 20;
+dpz = 100*(1 - 1/dcpf);
 useWavelet = 1; % 0 = wavelet packet
 
 % Get information about image
