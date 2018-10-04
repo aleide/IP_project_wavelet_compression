@@ -19,7 +19,9 @@ maxlev_image = wmaxlev(size(image_padded), wname); % soft rule?
 
 [C,S] = wavedec2(image_padded, maxlev_image, wname);
 
+tic;
 [C_comp,compressionfactor,percentzeroes,ER,LE] = Compdec(C, S, dpz);
+toc;
 
 % Present numbers
 disp("Compression factor")
