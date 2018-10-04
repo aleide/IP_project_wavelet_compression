@@ -1,11 +1,12 @@
-% 
-% 
-% 
-function [coefficients,compression_factor,percent_zeros,energy_ratio,loss_of_information]...
-	=	Compdec(coefficients, bookmat, dpz)
+%
+%
+%
+function [T,compression_factor,percent_zeros,energy_ratio,loss_of_information]...
+	= Compdwp(T, dpz)
 
 	% Collect initial data
-	detail_startindex = prod(bookmat(1,:),2) + 1;
+	coefficients = read(T,'allcfs');
+	detail_startindex = length(coefficients)/length(get(T,'tn')) + 1;
 	detail_coefficients = coefficients(detail_startindex:end);
 	number_detail_coefficients = length(detail_coefficients);
 
@@ -16,7 +17,7 @@ function [coefficients,compression_factor,percent_zeros,energy_ratio,loss_of_inf
 	thresholded_coefficients_sorted = ...
 		logical(horzcat(ones(1, number_of_zeros), zeros(1, number_detail_coefficients - number_of_zeros)));
 	thresholded_coefficients = thresholded_coefficients_sorted(D_reverse_sortindex);
-	
+
 	% Calculate fancy numbers
 	percent_zeros = 100*number_of_zeros/number_detail_coefficients;
 	compression_factor = 100/(100 - percent_zeros);
@@ -29,4 +30,5 @@ function [coefficients,compression_factor,percent_zeros,energy_ratio,loss_of_inf
 	% Collect and write final data
 	detail_coefficients(thresholded_coefficients) = 0;
 	coefficients(detail_startindex:end) = detail_coefficients;
+	T = write(T,'allcfs',coefficients);
 end

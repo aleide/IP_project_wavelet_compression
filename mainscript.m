@@ -2,14 +2,17 @@ close all; clear all; clc;
 dwtmode('per');
 
 % Load images
-load galax2.mat
+load galax2.mat %ngc3314
 clear map_ngc3314 % map_ngc3314 is just gray colormap.
+duststorm = double(imread('Dust_storm_in_Amarillo,_Texas.gif'));
+footprint = double(imread('610px-Footprint.gif'));
 
 % Parameters
-image = ngc3314;
+image = duststorm;
 wname = 'rbio6.8';
 decomp_level = 5;
 dpz = 99.0;
+useWavelet = 1; % 0 = wavelet packet
 
 % Get information about image
 image_size = size(image);
@@ -25,9 +28,15 @@ else
 end
 
 % Do the wavelet
-[C,S] = wavedec2(correct_image, decomp_level, wname);
-[C_comp,compressionfactor,percentzeroes,ER,LE] = Compdec(C, S, dpz);
-compressed_image = waverec2(C_comp, S, wname);
+if useWavelet
+	[C,S] = wavedec2(correct_image, decomp_level, wname);
+	[C_comp,compressionfactor,percentzeroes,ER,LE] = Compdec(C, S, dpz);
+	compressed_image = waverec2(C_comp, S, wname);
+else
+	T = wpdec2(correct_image,decomp_level,wname);
+	[T_comp,compressionfactor,percentzeroes,ER,LE] = Compdwp(T, dpz);
+	compressed_image = wprec2(T_comp);
+end
 
 % De-pad if necessary
 if needs_padding
