@@ -43,6 +43,8 @@ if needs_padding
 	compressed_image = compressed_image(1:image_size(1),1:image_size(2));
 end
 
+rms = Rms(compressed_image,image);
+
 % Display images
 figure; imshow(image,[]);
 figure; imshow(compressed_image,[]);
