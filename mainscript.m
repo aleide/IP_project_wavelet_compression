@@ -11,7 +11,7 @@ footprint512 = double(imread('Footprint512.tiff'));
 duststorm512 = double(imread('Dust512.tiff'));
 
 % Parameters
-image = duststorm;
+image = footprint;
 wname = 'rbio6.8';
 decomp_level = 5;
 dpz = 99.0;
@@ -46,7 +46,7 @@ if needs_padding
 	compressed_image = compressed_image(1:image_size(1),1:image_size(2));
 end
 
-rms = Rms(compressed_image,image);
+nrms = Nrms(compressed_image,image);
 
 % Display images
 figure; imshow(image,[]);
@@ -62,4 +62,4 @@ disp(ER)
 disp("Loss of information")
 disp(LE)
 disp("Root square mean error")
-disp(rms)
+disp(nrms)
