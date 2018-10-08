@@ -59,7 +59,8 @@ if needs_padding
 	compressed_image = compressed_image(1:image_size(1),1:image_size(2));
 end
 
-RMS = Rms(compressed_image,image);
+% Calculate root mean square error
+RMS = Rms2(compressed_image,image);
 
 % Display images
 figure; imshow(image,[]);
@@ -70,9 +71,9 @@ disp("Compression factor")
 disp(compressionfactor)
 disp("Percentage of zeroes")
 disp(percentzeroes)
-disp("Energy Ratio")
+disp("Energy Ratio (%)")
 disp(ER)
-disp("Loss of information")
+disp("Loss of information (%)")
 disp(LE)
-disp("Root square mean error")
-disp(RMS)
+disp("Root square mean error (%)")
+disp(RMS*100)
