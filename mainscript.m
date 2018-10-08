@@ -4,11 +4,11 @@ dwtmode('per');
 % Load images
 load galax2.mat %ngc3314
 clear map_ngc3314 % map_ngc3314 is just gray colormap.
-peppers_gray = imread('standard_test_images/peppers_gray.tif'); peppers_gray = double(peppers_gray(:,:,1));
-pirate = double(imread('standard_test_images/pirate.tif'));
+peppers_gray = imread('peppers_gray.tif'); peppers_gray = double(peppers_gray(:,:,1));
+pirate = double(imread('pirate.tif'));
 
 % Parameters
-image = jetplane;
+image = peppers_gray;
 wname = 'rbio6.8';
 decomp_level = 5;
 dcpf = 20;
@@ -45,8 +45,7 @@ if needs_padding
 end
 
 % Calculate root mean square error
-nrms = Nrms(compressed_image,image);
-RMS2 = Rms2(compressed_image,image);
+RMS = Rms(compressed_image,image);
 
 % Display images
 figure; imshow(image,[]);
@@ -62,4 +61,4 @@ disp(ER)
 disp("Loss of information (%)")
 disp(LE)
 disp("Root square mean error (%)")
-disp(RMS2*100)
+disp(RMS*100)

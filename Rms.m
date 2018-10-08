@@ -1,4 +1,4 @@
-function rms = Rms2(img1, img2)
+function rms = Rms(img1, img2)
 	% Normalise images to range [0 1]
 	img1 = img1 - min(min(img1));
 	img1 = img1./max(max(img1));
