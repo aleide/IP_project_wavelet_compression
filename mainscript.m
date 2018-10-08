@@ -47,7 +47,7 @@ if needs_padding
 	compressed_image = compressed_image(1:image_size(1),1:image_size(2));
 end
 
-rms = Rms(compressed_image,image);
+RMS = Rms(compressed_image,image);
 
 % Display images
 figure; imshow(image,[]);
@@ -63,4 +63,4 @@ disp(ER)
 disp("Loss of information")
 disp(LE)
 disp("Root square mean error")
-disp(rms)
+disp(RMS)
