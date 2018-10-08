@@ -22,6 +22,7 @@ woman_blonde = double(imread('standard_test_images/woman_blonde.tif'));
 woman_darkhair = double(imread('standard_test_images/woman_darkhair.tif'));
 
 % Parameters
+
 image = woman_darkhair;
 wname = 'rbio6.8';
 decomp_level = 3;
