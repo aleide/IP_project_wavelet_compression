@@ -7,6 +7,9 @@ clear map_ngc3314 % map_ngc3314 is just gray colormap.
 duststorm = double(imread('Dust_storm_in_Amarillo,_Texas.gif'));
 footprint = double(imread('610px-Footprint.gif'));
 
+footprint512 = double(imread('Footprint512.tiff'));
+duststorm512 = double(imread('Dust512.tiff'));
+
 % Parameters
 image = duststorm;
 wname = 'rbio6.8';
@@ -44,6 +47,8 @@ if needs_padding
 	compressed_image = compressed_image(1:image_size(1),1:image_size(2));
 end
 
+rms = Rms(compressed_image,image);
+
 % Display images
 figure; imshow(image,[]);
 figure; imshow(compressed_image,[]);
@@ -57,3 +62,5 @@ disp("Energy Ratio")
 disp(ER)
 disp("Loss of information")
 disp(LE)
+disp("Root square mean error")
+disp(rms)
