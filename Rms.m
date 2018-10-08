@@ -1,5 +1,5 @@
 
-function nrms = Nrms(compressed_image,original_image)
+function rms = Nrms(compressed_image,original_image)
 i_max = size(compressed_image,1);
 j_max = size(compressed_image,2);
 mn = i_max * j_max;
@@ -13,6 +13,6 @@ end
 
 rms = sqrt(sum/mn);
 
-img_max = max(max(compressed_image));
-img_min = min(min(compressed_image));
-nrms = rms/(img_max - img_min);
+%img_max = max(max(compressed_image));
+%img_min = min(min(compressed_image));
+%nrms = rms/(img_max - img_min);
