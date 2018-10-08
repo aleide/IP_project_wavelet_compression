@@ -14,7 +14,7 @@ function [T,compression_factor,percent_zeros,energy_ratio,loss_of_information]..
 	% Find coefficients to be thresholded
 	[~, D_sortindex] = sort(abs(detail_coefficients), 'ascend');
 	D_reverse_sortindex = ReverseSortIndex(D_sortindex);
-	number_of_zeros = min(fix(number_coefficients*dpz/100), number_coefficients);
+	number_of_zeros = min(fix(number_coefficients*dpz/100), number_detail_coefficients);
 	thresholded_coefficients_sorted = ...
 		logical(horzcat(ones(1, number_of_zeros), zeros(1, number_detail_coefficients - number_of_zeros)));
 	thresholded_coefficients = thresholded_coefficients_sorted(D_reverse_sortindex);

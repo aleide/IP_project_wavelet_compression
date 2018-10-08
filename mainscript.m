@@ -8,12 +8,12 @@ peppers_gray = imread('peppers_gray.tif'); peppers_gray = double(peppers_gray(:,
 pirate = double(imread('pirate.tif'));
 
 % Parameters
-image = peppers_gray;
+image = pirate;
 wname = 'rbio6.8';
-decomp_level = 5;
-dcpf = 20;
+decomp_level = 3;
+dcpf = 100;
 dpz = 100*(1 - 1/dcpf);
-useWavelet = 1; % 0 = wavelet packet
+useWavelet = 0; % 0 = wavelet packet
 
 % Get information about image
 image_size = size(image);
