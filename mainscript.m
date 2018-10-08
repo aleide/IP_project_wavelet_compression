@@ -60,7 +60,8 @@ if needs_padding
 end
 
 % Calculate root mean square error
-RMS = Rms2(compressed_image,image);
+nrms = Nrms(compressed_image,image);
+RMS2 = Rms2(compressed_image,image);
 
 % Display images
 figure; imshow(image,[]);
@@ -76,4 +77,4 @@ disp(ER)
 disp("Loss of information (%)")
 disp(LE)
 disp("Root square mean error (%)")
-disp(RMS*100)
+disp(RMS2*100)
